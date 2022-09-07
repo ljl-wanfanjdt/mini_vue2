@@ -1,12 +1,20 @@
 const path = require('path')
 module.exports = {
-  entry: './src/index.js',
-  optput: {
-    filename: 'bundle.js',
-    path: path.resolve(__dirname, './dist')
+  mode: 'development',
+  entry: {
+    vue: {
+      import: './src/index.js',
+      filename: 'vue.js'
+    },
+
   },
-  module: {
-    rules: []
-  },
-  plugins: []
+  output: {
+    // filename: '[name].bundle.js',
+    path: path.resolve(__dirname, './dist'),
+    library: {
+      name: 'Vue',
+      type: 'umd',
+      export: 'default'
+    }
+  }
 }
